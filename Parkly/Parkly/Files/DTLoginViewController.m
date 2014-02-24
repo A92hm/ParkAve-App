@@ -7,8 +7,12 @@
 //
 
 #import "DTLoginViewController.h"
+#import "AFNetworking.h"
+#import "DTModel.h"
 
 @interface DTLoginViewController ()
+
+@property(weak, nonatomic) NSString* apiURL;
 
 @end
 
@@ -19,6 +23,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        
     }
     return self;
 }
@@ -37,6 +42,21 @@
     // Dispose of any resources that can be recreated.
 }
 - (IBAction)loginButtonPressed:(id)sender {
+    
+    // Start Calling Authentication API
+    DTModel* manager = [DTModel sharedInstance];
+    
+    /****************CHANGE THESE PARAMETERS********************/
+    NSDictionary *parameters = @{@"email":      @"jterry94@gmail.com",
+                                 @"password":   @"yolo"
+                                 };
+    [manager authenticateUser:parameters success:^(NSURLSessionDataTask *task, id responseObject) {
+        NSLog(@"JSON: %@", responseObject);
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        NSLog(@"Error: %@", error);
+    }];
+    //End Calling Authentication API
+    
   [self performSegueWithIdentifier:@"goToMain" sender:self];
 }
 
