@@ -38,8 +38,7 @@
 #pragma mark - Network Calls
 
 - (void) authenticateUser:(NSDictionary*)parameters success: (void (^)(NSURLSessionDataTask *task, id responseObject))success failure:(void (^)(NSURLSessionDataTask *task, NSError *error))failure {
-    //FIX THIS
-    [self.networkManager POST:@"users/session" parameters:parameters success:^(NSURLSessionDataTask *task, id responseObject) {
+    [self.networkManager postTo:@"users" what:@"session" parameters:parameters success:^(NSURLSessionDataTask *task, id responseObject) {
         success(task, responseObject);
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         failure(task, error);
@@ -47,7 +46,7 @@
 }
 
 - (void) getAllUsers: (void (^)(NSURLSessionDataTask *task, id responseObject))success failure:(void (^)(NSURLSessionDataTask *task, NSError *error))failure {
-    [self.networkManager fetchAllUsers:^(NSURLSessionDataTask *task, id responseObject) {
+    [self.networkManager getFrom:@"users" parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         success(task, [self parseJSON:responseObject toArrayOfClass:[DTUser class]]);
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         failure(task, error);
@@ -65,10 +64,10 @@
     //0
     
     //1
-    NSDictionary* parameters = [NSDictionary dictionaryWithObject:lotID forKey:@"_id"];
+    //NSDictionary* parameters = [NSDictionary dictionaryWithObject:lotID forKey:@"_id"];
     
     //2
-    [self.networkManager fetchSpotsForLotWithId:parameters success:^(NSURLSessionDataTask *task, id responseObject) {
+    [self.networkManager getFrom:@"lots" who:lotID what:@"spots" parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         //if success, first parse JSON into objects
         NSArray* spotArray = [self parseJSON:responseObject toArrayOfClass:[DTParkingSpot class]];
         //update the dataManager
@@ -83,10 +82,11 @@
 }
 
 - (void) getUserWithId:(NSString*)userID success: (void (^)(NSURLSessionDataTask *task, id responseObject))success failure:(void (^)(NSURLSessionDataTask *task, NSError *error))failure {
-    NSDictionary* parameters = [NSDictionary dictionaryWithObject:userID forKey:@"_id"];
+    //NSDictionary* parameters = [NSDictionary dictionaryWithObject:userID forKey:@"_id"];
     
     //2
-    [self.networkManager fetchUserWithId:parameters success:^(NSURLSessionDataTask *task, id responseObject) {
+
+    [self.networkManager getFrom:@"users" what:userID parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         //if success, first parse JSON into objects
         NSArray* spotArray = [self parseJSON:responseObject toArrayOfClass:[DTParkingSpot class]];
         //update the dataManager
@@ -95,7 +95,6 @@
         //do whatever the user wants with the array of spots
         success(task, spotArray);
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        //bubble up the error
         failure(task, error);
     }];
 

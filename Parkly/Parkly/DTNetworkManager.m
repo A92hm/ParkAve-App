@@ -64,42 +64,81 @@ static NSString * const apiBaseURL = @"http://parking.alihm.net/api/";
 }
 
 
-
-///////////////
-//GET-> 0 Parameters
-- (void) get:(NSString*)fromWhere parameters:(NSDictionary*)parameters success: (void (^)(NSURLSessionDataTask *task, id responseObject))success failure:(void (^)(NSURLSessionDataTask *task, NSError *error))failure {
-    [self GET:fromWhere parameters:parameters success:^(NSURLSessionDataTask *task, id responseObject) {
-        success(task, responseObject);
-    } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        failure(task, error);
-    }];
-}
+#pragma mark - GET
 
 //GET-> 1 Parameter
-- (void) get:(NSString*)fromWhere which:(NSString*)whatYouWant parameters:(NSDictionary*)parameters success: (void (^)(NSURLSessionDataTask *task, id responseObject))success failure:(void (^)(NSURLSessionDataTask *task, NSError *error))failure {
-    
-    //build an API call string
-    NSString* string = [NSString stringWithFormat:@"%@/%@", fromWhere, whatYouWant];
-    
-    [self GET:string parameters:parameters success:^(NSURLSessionDataTask *task, id responseObject) {
-        success(task, responseObject);
-    } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        failure(task, error);
-    }];
+- (void) getFrom:(NSString*)fromWhere parameters:(NSDictionary*)parameters success: (void (^)(NSURLSessionDataTask *task, id responseObject))success failure:(void (^)(NSURLSessionDataTask *task, NSError *error))failure {
+    [self genericGet:fromWhere parameters:parameters success:success failure:failure];
 }
 
 //GET-> 2 Parameters
-- (void) get:(NSString*)fromWhere who:(NSString*)whoYouWantItFrom what:(NSString*)whatYouWant which:(NSString*)whichOne parameters:(NSDictionary*)parameters success: (void (^)(NSURLSessionDataTask *task, id responseObject))success failure:(void (^)(NSURLSessionDataTask *task, NSError *error))failure {
+- (void) getFrom:(NSString*)fromWhere what:(NSString*)whatYouWant parameters:(NSDictionary*)parameters success: (void (^)(NSURLSessionDataTask *task, id responseObject))success failure:(void (^)(NSURLSessionDataTask *task, NSError *error))failure {
+    
+    //build an API call string
+    NSString* string = [NSString stringWithFormat:@"%@/%@", fromWhere, whatYouWant];
+    [self genericGet:string parameters:parameters success:success failure:failure];
+}
+
+//GET-> 3 Parameters
+- (void) getFrom:(NSString*)fromWhere who:(NSString*)whoYouWantItFrom what:(NSString*)whatYouWant parameters:(NSDictionary*)parameters success: (void (^)(NSURLSessionDataTask *task, id responseObject))success failure:(void (^)(NSURLSessionDataTask *task, NSError *error))failure {
+    
+    //build an API call string
+    NSString* string = [NSString stringWithFormat:@"%@/%@/%@", fromWhere, whoYouWantItFrom, whatYouWant];
+    [self genericGet:string parameters:parameters success:success failure:failure];
+}
+
+//GET-> 4 Parameters
+- (void) getFrom:(NSString*)fromWhere who:(NSString*)whoYouWantItFrom what:(NSString*)whatYouWant which:(NSString*)whichOne parameters:(NSDictionary*)parameters success: (void (^)(NSURLSessionDataTask *task, id responseObject))success failure:(void (^)(NSURLSessionDataTask *task, NSError *error))failure {
     
     //build an API call string
     NSString* string = [NSString stringWithFormat:@"%@/%@/%@/%@", fromWhere, whoYouWantItFrom, whatYouWant, whichOne];
-    
-    [self GET:string parameters:parameters success:^(NSURLSessionDataTask *task, id responseObject) {
+    [self genericGet:string parameters:parameters success:success failure:failure];
+}
+
+#pragma mark - POST
+
+//POST-> 1 Parameter
+- (void) postTo:(NSString*)toWhere parameters:(NSDictionary*)parameters success: (void (^)(NSURLSessionDataTask *task, id responseObject))success failure:(void (^)(NSURLSessionDataTask *task, NSError *error))failure {
+    [self genericPost:toWhere parameters:parameters success:success failure:failure];
+}
+
+//POST-> 2 Parameters
+- (void) postTo:(NSString*)toWhere what:(NSString*)whatYouWant parameters:(NSDictionary*)parameters success: (void (^)(NSURLSessionDataTask *task, id responseObject))success failure:(void (^)(NSURLSessionDataTask *task, NSError *error))failure {
+    //build an API call string
+    NSString* string = [NSString stringWithFormat:@"%@/%@", toWhere, whatYouWant];
+    [self genericPost:string parameters:parameters success:success failure:failure];
+}
+
+//POST-> 3 Parameters
+- (void) postTo:(NSString*)toWhere who:(NSString*)whoYouWantItFrom what:(NSString*)whatYouWant parameters:(NSDictionary*)parameters success: (void (^)(NSURLSessionDataTask *task, id responseObject))success failure:(void (^)(NSURLSessionDataTask *task, NSError *error))failure {
+    //build an API call string
+    NSString* string = [NSString stringWithFormat:@"%@/%@/%@", toWhere, whoYouWantItFrom, whatYouWant];
+    [self genericPost:string parameters:parameters success:success failure:failure];
+}
+
+//POST-> 4 Parameters
+- (void) postTo:(NSString*)toWhere who:(NSString*)whoYouWantItFrom what:(NSString*)whatYouWant which:(NSString*)whichOne parameters:(NSDictionary*)parameters success: (void (^)(NSURLSessionDataTask *task, id responseObject))success failure:(void (^)(NSURLSessionDataTask *task, NSError *error))failure {
+    //build an API call string
+    NSString* string = [NSString stringWithFormat:@"%@/%@/%@/%@", toWhere, whoYouWantItFrom, whatYouWant, whichOne];
+    [self genericPost:string parameters:parameters success:success failure:failure];
+}
+
+#pragma mark - Helper Methods
+
+- (void) genericGet:(NSString*)pathString parameters:(NSDictionary*)parameters success: (void (^)(NSURLSessionDataTask *task, id responseObject))success failure:(void (^)(NSURLSessionDataTask *task, NSError *error))failure {
+    [self GET:pathString parameters:parameters success:^(NSURLSessionDataTask *task, id responseObject) {
         success(task, responseObject);
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         failure(task, error);
     }];
 }
 
+- (void) genericPost:(NSString*)pathString parameters:(NSDictionary*)parameters success: (void (^)(NSURLSessionDataTask *task, id responseObject))success failure:(void (^)(NSURLSessionDataTask *task, NSError *error))failure {
+    [self POST:pathString parameters:parameters success:^(NSURLSessionDataTask *task, id responseObject) {
+        success(task, responseObject);
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        failure(task, error);
+    }];
+}
 
 @end
