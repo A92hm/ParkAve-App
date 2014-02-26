@@ -58,4 +58,10 @@ static NSString * const apiBaseURL = @"http://parking.alihm.net/api/";
         failure(task, error);
     }];
 }
+
+- (void) fetchUserWithId:(NSDictionary*)parameters success: (void (^)(NSURLSessionDataTask *task, id responseObject))success failure:(void (^)(NSURLSessionDataTask *task, NSError *error))failure {
+    //[self GET:@"users/"]
+}
+
+
 @end

@@ -7,6 +7,8 @@
 //
 
 #import "DTLoginViewController.h"
+#import "DTModel.h"
+#import "DTUser.h"
 
 @interface DTLoginViewController ()
 
@@ -37,6 +39,15 @@
     // Dispose of any resources that can be recreated.
 }
 - (IBAction)loginButtonPressed:(id)sender {
+    [[DTModel sharedInstance] getAllUsers:^(NSURLSessionDataTask *task, id responseObject) {
+        NSArray* array = responseObject;
+        for (DTUser* user in array) {
+            NSLog(@"%@", user);
+        }
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        NSLog(@"%@", error);
+    }];
+    
   [self performSegueWithIdentifier:@"goToMain" sender:self];
 }
 
