@@ -198,6 +198,8 @@
 		9D15D3D518B7F77800FA635E /* DTDataTypes */ = {
 			isa = PBXGroup;
 			children = (
+				59BCEC0F18BBACD100628B01 /* DTModel.h */,
+				59BCEC1018BBACD100628B01 /* DTModel.m */,
 				9D15D3D618B7F79100FA635E /* DTParkingLot.h */,
 				9D15D3D718B7F79100FA635E /* DTParkingLot.m */,
 				9D15D3D918B7F79F00FA635E /* DTParkingSpot.h */,
@@ -316,8 +318,6 @@
 			children = (
 				9DE9D55718B53CC10035519D /* DTLoginViewController.h */,
 				9DE9D55818B53CC10035519D /* DTLoginViewController.m */,
-				59BCEC0F18BBACD100628B01 /* DTModel.h */,
-				59BCEC1018BBACD100628B01 /* DTModel.m */,
 			);
 			name = DTLogin;
 			sourceTree = "<group>";
