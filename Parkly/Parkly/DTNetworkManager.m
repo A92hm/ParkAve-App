@@ -64,4 +64,42 @@ static NSString * const apiBaseURL = @"http://parking.alihm.net/api/";
 }
 
 
+
+///////////////
+//GET-> 0 Parameters
+- (void) get:(NSString*)fromWhere parameters:(NSDictionary*)parameters success: (void (^)(NSURLSessionDataTask *task, id responseObject))success failure:(void (^)(NSURLSessionDataTask *task, NSError *error))failure {
+    [self GET:fromWhere parameters:parameters success:^(NSURLSessionDataTask *task, id responseObject) {
+        success(task, responseObject);
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        failure(task, error);
+    }];
+}
+
+//GET-> 1 Parameter
+- (void) get:(NSString*)fromWhere which:(NSString*)whatYouWant parameters:(NSDictionary*)parameters success: (void (^)(NSURLSessionDataTask *task, id responseObject))success failure:(void (^)(NSURLSessionDataTask *task, NSError *error))failure {
+    
+    //build an API call string
+    NSString* string = [NSString stringWithFormat:@"%@/%@", fromWhere, whatYouWant];
+    
+    [self GET:string parameters:parameters success:^(NSURLSessionDataTask *task, id responseObject) {
+        success(task, responseObject);
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        failure(task, error);
+    }];
+}
+
+//GET-> 2 Parameters
+- (void) get:(NSString*)fromWhere who:(NSString*)whoYouWantItFrom what:(NSString*)whatYouWant which:(NSString*)whichOne parameters:(NSDictionary*)parameters success: (void (^)(NSURLSessionDataTask *task, id responseObject))success failure:(void (^)(NSURLSessionDataTask *task, NSError *error))failure {
+    
+    //build an API call string
+    NSString* string = [NSString stringWithFormat:@"%@/%@/%@/%@", fromWhere, whoYouWantItFrom, whatYouWant, whichOne];
+    
+    [self GET:string parameters:parameters success:^(NSURLSessionDataTask *task, id responseObject) {
+        success(task, responseObject);
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        failure(task, error);
+    }];
+}
+
+
 @end
