@@ -19,6 +19,8 @@
 		59710D2818BDA50800226117 /* AFURLRequestSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 59710D1D18BDA50800226117 /* AFURLRequestSerialization.m */; };
 		59710D2918BDA50800226117 /* AFURLResponseSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 59710D1F18BDA50800226117 /* AFURLResponseSerialization.m */; };
 		59710D2A18BDA50800226117 /* AFURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 59710D2118BDA50800226117 /* AFURLSessionManager.m */; };
+		59710D2E18C02BE000226117 /* DTCar.m in Sources */ = {isa = PBXBuildFile; fileRef = 59710D2D18C02BE000226117 /* DTCar.m */; };
+		59710D3118C02BE700226117 /* DTReview.m in Sources */ = {isa = PBXBuildFile; fileRef = 59710D3018C02BE700226117 /* DTReview.m */; };
 		9D15D3B118B5B33300FA635E /* DTRoundedImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D15D3B018B5B33300FA635E /* DTRoundedImageView.m */; };
 		9D15D3BC18B6F34100FA635E /* JosefinSlab-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9D15D3B218B6F34100FA635E /* JosefinSlab-Bold.ttf */; };
 		9D15D3BD18B6F34100FA635E /* JosefinSlab-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9D15D3B318B6F34100FA635E /* JosefinSlab-BoldItalic.ttf */; };
@@ -96,6 +98,10 @@
 		59710D1F18BDA50800226117 /* AFURLResponseSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLResponseSerialization.m; sourceTree = "<group>"; };
 		59710D2018BDA50800226117 /* AFURLSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLSessionManager.h; sourceTree = "<group>"; };
 		59710D2118BDA50800226117 /* AFURLSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLSessionManager.m; sourceTree = "<group>"; };
+		59710D2C18C02BE000226117 /* DTCar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTCar.h; sourceTree = "<group>"; };
+		59710D2D18C02BE000226117 /* DTCar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTCar.m; sourceTree = "<group>"; };
+		59710D2F18C02BE700226117 /* DTReview.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTReview.h; sourceTree = "<group>"; };
+		59710D3018C02BE700226117 /* DTReview.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTReview.m; sourceTree = "<group>"; };
 		9D15D3AF18B5B33300FA635E /* DTRoundedImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DTRoundedImageView.h; path = Files/DTRoundedImageView.h; sourceTree = "<group>"; };
 		9D15D3B018B5B33300FA635E /* DTRoundedImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DTRoundedImageView.m; path = Files/DTRoundedImageView.m; sourceTree = "<group>"; };
 		9D15D3B218B6F34100FA635E /* JosefinSlab-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "JosefinSlab-Bold.ttf"; sourceTree = "<group>"; };
@@ -234,8 +240,12 @@
 			isa = PBXGroup;
 			children = (
 				9D15D3D618B7F79100FA635E /* DTParkingLot.h */,
-				9D15D3D718B7F79100FA635E /* DTParkingLot.m */,
+				59710D2C18C02BE000226117 /* DTCar.h */,
+				59710D2D18C02BE000226117 /* DTCar.m */,
+				59710D2F18C02BE700226117 /* DTReview.h */,
+				59710D3018C02BE700226117 /* DTReview.m */,
 				9D15D3D918B7F79F00FA635E /* DTParkingSpot.h */,
+				9D15D3D718B7F79100FA635E /* DTParkingLot.m */,
 				9D15D3DA18B7F79F00FA635E /* DTParkingSpot.m */,
 				9D15D3E218B7FF3F00FA635E /* DTUser.h */,
 				9D15D3E318B7FF3F00FA635E /* DTUser.m */,
@@ -490,6 +500,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				59710D2E18C02BE000226117 /* DTCar.m in Sources */,
 				59710D2818BDA50800226117 /* AFURLRequestSerialization.m in Sources */,
 				59710D2718BDA50800226117 /* AFURLConnectionOperation.m in Sources */,
 				9D15D3E618B807EC00FA635E /* DTLotTableViewController.m in Sources */,
@@ -512,6 +523,7 @@
 				59710D0C18BDA48B00226117 /* DTModel.m in Sources */,
 				59710D0D18BDA48B00226117 /* DTNetworkManager.m in Sources */,
 				59710D2318BDA50800226117 /* AFHTTPRequestOperationManager.m in Sources */,
+				59710D3118C02BE700226117 /* DTReview.m in Sources */,
 				9D15D49D18BD952E00FA635E /* DTSpotTableViewController.m in Sources */,
 				9DE9D52E18B462B50035519D /* main.m in Sources */,
 				9D15D3E418B7FF3F00FA635E /* DTUser.m in Sources */,

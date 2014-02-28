@@ -39,11 +39,8 @@
     // Dispose of any resources that can be recreated.
 }
 - (IBAction)loginButtonPressed:(id)sender {
-    [[DTModel sharedInstance] getAllUsers:^(NSURLSessionDataTask *task, id responseObject) {
-        NSArray* array = responseObject;
-        for (DTUser* user in array) {
-            NSLog(@"%@", user);
-        }
+    [[DTModel sharedInstance] authenticateUser:@"emclaughlin@hotmail.com" withPassword:@"soba" success:^(NSURLSessionDataTask *task, id responseObject) {
+        NSLog(@"%@",responseObject);
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         NSLog(@"%@", error);
     }];

@@ -37,7 +37,11 @@
 
 #pragma mark - Network Calls
 
-- (void) authenticateUser:(NSDictionary*)parameters success: (void (^)(NSURLSessionDataTask *task, id responseObject))success failure:(void (^)(NSURLSessionDataTask *task, NSError *error))failure {
+- (void) authenticateUser:(NSString*)email withPassword:(NSString*)password success: (void (^)(NSURLSessionDataTask *task, id responseObject))success failure:(void (^)(NSURLSessionDataTask *task, NSError *error))failure {
+    
+    NSDictionary* parameters = @{@"email": email,
+                                 @"password": password};
+    
     [self.networkManager postTo:@"users" what:@"session" parameters:parameters success:^(NSURLSessionDataTask *task, id responseObject) {
         success(task, responseObject);
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
@@ -45,7 +49,7 @@
     }];
 }
 
-- (void) getAllUsers: (void (^)(NSURLSessionDataTask *task, id responseObject))success failure:(void (^)(NSURLSessionDataTask *task, NSError *error))failure {
+- (void) getAllUsers: (void (^)(NSURLSessionDataTask *task, NSArray* allUsers))success failure:(void (^)(NSURLSessionDataTask *task, NSError *error))failure {
     [self.networkManager getFrom:@"users" parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         success(task, [self parseJSON:responseObject toArrayOfClass:[DTUser class]]);
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
@@ -97,21 +101,20 @@
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         failure(task, error);
     }];
-
 }
 
 
 #pragma mark - Helper Methods
 
-- (NSArray*) parseJSON:(id)json toArrayOfClass:(Class)theClass {
+- (NSArray*) parseJSON:(id)json toArrayOfClass:(__unsafe_unretained Class)theClass {
     NSArray* array = json;
-    NSArray* newArray;
+    NSMutableArray* newArray = [[NSMutableArray alloc] init];
     for (NSDictionary* item in array) {
         id newItem = [[theClass alloc] init];
         [newItem setValuesForKeysWithDictionary:item];
-        [[newArray mutableCopy] addObject:newItem];
+        [newArray insertObject:newItem atIndex:[newArray count]];
     }
-    return newArray;
+    return [newArray copy];
 }
 
 @end
