@@ -15,7 +15,7 @@
 @property (weak, nonatomic) DTDataManager* dataManager;
 @property (weak, nonatomic) DTNetworkManager* networkManager;
 
-- (NSArray*) parseJSON:(id)json toArrayOfClass:(Class)theClass;
+- (NSArray*) parseJSON:(id)json toArrayOfClass:(__unsafe_unretained Class)theClass;
 
 @end
 
