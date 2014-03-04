@@ -7,11 +7,15 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "DTUser.h"
 
 @interface DTDataManager : NSObject
 
 + (instancetype) sharedInstance;
 
+@property(strong, nonatomic) DTUser* currentUser;
+
 - (void) updateSpots:(NSArray*)spotArray withLotId:(NSString*)lotID;
+
 
 @end

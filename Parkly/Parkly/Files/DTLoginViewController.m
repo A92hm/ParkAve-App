@@ -40,12 +40,17 @@
 }
 - (IBAction)loginButtonPressed:(id)sender {
     [[DTModel sharedInstance] authenticateUser:@"emclaughlin@hotmail.com" withPassword:@"soba" success:^(NSURLSessionDataTask *task, id responseObject) {
-        NSLog(@"%@",responseObject);
+        if([responseObject class] == [NSString class] && [responseObject isEqualToString:@"error"]) {
+            NSLog(@"Invalid username/password combination. please try again");
+        } else {
+            NSLog(@"Hello, your birthday is %@", [[[DTModel sharedInstance] currentUser] birthdate]);
+            [self performSegueWithIdentifier:@"goToMain" sender:self];
+        }
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         NSLog(@"%@", error);
     }];
     
-  [self performSegueWithIdentifier:@"goToMain" sender:self];
+
 }
 
 - (IBAction)signupButtonPressed:(id)sender {

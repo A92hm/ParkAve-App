@@ -18,6 +18,8 @@
         sharedInstance = [[[self class] alloc] init];
         
         // Do any other initialisation stuff here
+        sharedInstance.currentUser = [[DTUser alloc] init];
+        
         //sharedInstance.dataManager = [DTDataManager sharedInstance];
         //sharedInstance.networkManager = [DTNetworkManager sharedInstance];
     });

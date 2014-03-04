@@ -22,6 +22,8 @@
 
 - (void) getSpotsForLotWithId:(NSString*)lotID success: (void (^)(NSURLSessionDataTask *task, id responseObject))success failure:(void (^)(NSURLSessionDataTask *task, NSError *error))failure;
 
+- (DTUser*) currentUser;
+
 
 #pragma mark - Helper Methods
 

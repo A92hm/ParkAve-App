@@ -43,6 +43,11 @@
                                  @"password": password};
     
     [self.networkManager postTo:@"users" what:@"session" parameters:parameters success:^(NSURLSessionDataTask *task, id responseObject) {
+        if([[responseObject valueForKey:@"err"] isEqualToString:@"nomatch"]) {
+            responseObject = @"error";
+        } else {
+            [[[self dataManager] currentUser] setValuesForKeysWithDictionary:responseObject];
+        }
         success(task, responseObject);
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         failure(task, error);
@@ -103,6 +108,9 @@
     }];
 }
 
+- (DTUser*) currentUser {
+    return [self.dataManager currentUser];
+}
 
 #pragma mark - Helper Methods
 
