@@ -20,6 +20,7 @@
 + (instancetype) sharedInstance;
 
 #pragma mark - Local User Session
+- (void) loginUser:(DTUser*)user;
 - (void) logoutUser;
 - (BOOL) userIsLoggedIn;
 - (BOOL) userHasAccount;
@@ -103,7 +104,7 @@
 #pragma mark - Sorting
 
 - (NSArray*) sortLotsByRating:(NSArray*)array isAscending:(BOOL)isAscending;
-- (NSArray*) sortLots:(NSMutableArray*)array byDistanceFromLatitude:(CGFloat)latitude andLongitude:(CGFloat)longitude isDescending:(BOOL)isDescending;
+- (NSArray*) sortLots:(NSMutableArray*)array byDistanceFromLatitude:(CGFloat)latitude andLongitude:(CGFloat)longitude isAscending:(BOOL)isDescending;
 - (NSArray*) sortLotsByPrice:(NSArray*)array isAscending:(BOOL)isAscending;
 
 #pragma mark - Helper Methods

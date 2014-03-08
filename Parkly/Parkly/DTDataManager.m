@@ -18,7 +18,7 @@
         sharedInstance = [[[self class] alloc] init];
         
         // Do any other initialisation stuff here
-        sharedInstance.currentUser = [[DTUser alloc] init];
+        sharedInstance.currentUser = nil;
         
         //sharedInstance.dataManager = [DTDataManager sharedInstance];
         //sharedInstance.networkManager = [DTNetworkManager sharedInstance];
@@ -28,6 +28,17 @@
 
 - (void) updateSpots:(NSArray*)spotArray withLotId:(NSString*)lotID {
     
+}
+
+- (void) loginUser:(DTUser*)user {
+    #warning you'll need more than this
+    NSLog(@"user is logged in");
+    self.currentUser = user;
+}
+- (void) logoutUser {
+    #warning you'll need more than this
+    NSLog(@"user is logged out");
+    self.currentUser = nil;
 }
 
 @end

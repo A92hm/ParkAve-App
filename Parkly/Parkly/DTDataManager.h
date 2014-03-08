@@ -19,7 +19,11 @@
 
 @property(strong, nonatomic) DTUser* currentUser;
 
+- (void) loginUser:(DTUser*)user;
+- (void) logoutUser;
+
 - (void) updateSpots:(NSArray*)spotArray withLotId:(NSString*)lotID;
+
 
 
 @end

@@ -35,6 +35,23 @@
     return sharedInstance;
 }
 
+#pragma mark - Local User Session
+
+- (void) loginUser:(DTUser*)user {
+#warning you'll need more than this
+    [[self dataManager] loginUser:user];
+}
+- (void) logoutUser {
+    #warning you'll need more than this
+    [[self dataManager] logoutUser];
+}
+- (BOOL) userIsLoggedIn {
+    return [self currentUser] != nil;
+}
+- (BOOL) userHasAccount {
+    return [self defaultsExist];
+}
+
 #pragma mark - Users
 
 - (void) authenticateUser:(DTUser*)user success: (void (^)(NSURLSessionDataTask *task, id responseObject))success failure:(void (^)(NSURLSessionDataTask *task, NSError *error))failure {
@@ -185,6 +202,14 @@
 }
 
 #pragma mark - Cars
+
+- (void) getCarsForUser:(DTUser*)user success: (void (^)(NSURLSessionDataTask *task, id responseObject))success failure:(void (^)(NSURLSessionDataTask *task, NSError *error))failure {
+    [self.networkManager call:@"get" one:@"users" two:[user _id] three:@"cars" parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+        success(task, [self parseJSON:responseObject toArrayOfClass:[DTCar class]]);
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        failure(task, error);
+    }];
+}
 
 - (void) getCar:(DTCar*)car success: (void (^)(NSURLSessionDataTask *task, id responseObject))success failure:(void (^)(NSURLSessionDataTask *task, NSError *error))failure {
     NSLog(@"%@ not implemented", NSStringFromSelector(_cmd));
