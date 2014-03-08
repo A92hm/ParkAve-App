@@ -9,10 +9,19 @@
 #import <UIKit/UIKit.h>
 #import "DTParkingLot.h"
 
+@protocol DTSpotTableViewControllerDelegate <NSObject>
+
+-(void)didSelectRow;
+-(void)didDeselectRow;
+
+@end
+
 @interface DTSpotTableViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 
 @property (strong, nonatomic) DTParkingLot *theLot;
 @property (strong, nonatomic) IBOutlet UITableView *theTable;
 @property (strong, nonatomic) NSArray *spots;
+
+@property (weak, nonatomic) id<DTSpotTableViewControllerDelegate> delegate;
 
 @end

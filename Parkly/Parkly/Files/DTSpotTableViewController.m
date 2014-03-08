@@ -69,11 +69,13 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
   [((DTSpotTableCell*) [tableView cellForRowAtIndexPath:indexPath]) setEditing:YES animated:YES];
+  [self.delegate didSelectRow];
 }
 
 -(void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
 {
   [((DTSpotTableCell*) [tableView cellForRowAtIndexPath:indexPath]) setEditing:NO animated:YES];
+  [self.delegate didDeselectRow];
 }
 
 -(NSString*)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section

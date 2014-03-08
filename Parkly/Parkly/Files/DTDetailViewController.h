@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "DTParkingLot.h"
+#import "DTSpotTableViewController.h"
 
-@interface DTDetailViewController : UIViewController
+@interface DTDetailViewController : UIViewController <DTSpotTableViewControllerDelegate>
 - (IBAction)bookSpot:(id)sender;
 
 @property (strong, nonatomic) DTParkingLot *lot;
@@ -19,5 +20,6 @@
 @property (strong, nonatomic) IBOutlet UILabel *averageReview;
 @property (strong, nonatomic) IBOutlet UILabel *averagePrice;
 @property (strong, nonatomic) IBOutlet UIImageView *imageView;
+@property (strong, nonatomic) IBOutlet UIButton *bookItButton;
 
 @end
