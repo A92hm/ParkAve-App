@@ -28,7 +28,7 @@
 
 -(void)initWithLot:(DTParkingLot*)lot
 {
-  self.ratingLabel.text = [NSString stringWithFormat:@"%.2f", lot.averageRating];
+  self.ratingLabel.text = [NSString stringWithFormat:@"%@", lot.averageRating];
   self.distanceLabel.text = [NSString stringWithFormat:@"%.2f", lot.distance.floatValue];
   self.titleLabel.text = lot.user_id;
   self.priceLabel.text = [NSString stringWithFormat:@"$%.2f", lot.averagePrice.floatValue];

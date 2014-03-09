@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DTParkingLotsDB.h"
 
 @protocol DTLotTableViewControllerDelegate <NSObject>
 
@@ -19,7 +20,7 @@
 @property (weak) id <DTLotTableViewControllerDelegate> delegate;
 
 @property (strong, nonatomic) IBOutlet UITableView *theTable;
-@property (strong, nonatomic) NSArray *theLots;
+@property (strong, nonatomic) NSArray *parkingLots;
 
 -(void)sortByReview;
 -(void)sortByPrice;

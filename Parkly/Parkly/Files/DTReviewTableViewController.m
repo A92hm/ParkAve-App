@@ -73,7 +73,7 @@
 }
 
 
--(double)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
   DTReview *review = self.reviews[indexPath.row];
   return MAX(120.0, [self heightForText:review.body]);

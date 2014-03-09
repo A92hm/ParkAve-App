@@ -62,7 +62,7 @@
     self.profileViewController = [segue destinationViewController];
     self.profileViewController.delegate = self;
   } else if([[segue identifier] isEqualToString:@"pushToDetail"]){
-    ((DTDetailViewController*) [segue destinationViewController]).lot = self.lotTable.theLots[self.lotTable.theTable.indexPathForSelectedRow.row];
+    ((DTDetailViewController*) [segue destinationViewController]).lot = self.lotTable.parkingLots[self.lotTable.theTable.indexPathForSelectedRow.row];
   }
 }
 

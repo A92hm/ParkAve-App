@@ -63,6 +63,11 @@
 		9DF5B46F18C55B2000E1D1D7 /* DTDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DF5B45F18C55B2000E1D1D7 /* DTDataManager.m */; };
 		9DF5B47118C55B2000E1D1D7 /* DTModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DF5B46318C55B2000E1D1D7 /* DTModel.m */; };
 		9DF5B47218C55B2000E1D1D7 /* DTNetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DF5B46518C55B2000E1D1D7 /* DTNetworkManager.m */; };
+		C75A741B18C5B02C007FDEC5 /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = C75A741918C5B02C007FDEC5 /* FMDatabase.m */; };
+		C75A741C18C5B02C007FDEC5 /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = C75A741A18C5B02C007FDEC5 /* FMResultSet.m */; };
+		C75A741F18C5B054007FDEC5 /* DTParkingLotsDB.m in Sources */ = {isa = PBXBuildFile; fileRef = C75A741E18C5B054007FDEC5 /* DTParkingLotsDB.m */; };
+		C75A742318C5B1DE007FDEC5 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C75A742218C5B1DE007FDEC5 /* libsqlite3.dylib */; };
+		C75A742D18C5D0DD007FDEC5 /* DTParkingLots.db in Resources */ = {isa = PBXBuildFile; fileRef = C75A742C18C5D0DD007FDEC5 /* DTParkingLots.db */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -170,6 +175,14 @@
 		9DF5B46318C55B2000E1D1D7 /* DTModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTModel.m; sourceTree = "<group>"; };
 		9DF5B46418C55B2000E1D1D7 /* DTNetworkManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTNetworkManager.h; sourceTree = "<group>"; };
 		9DF5B46518C55B2000E1D1D7 /* DTNetworkManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTNetworkManager.m; sourceTree = "<group>"; };
+		C75A741718C5B02C007FDEC5 /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabase.h; sourceTree = "<group>"; };
+		C75A741818C5B02C007FDEC5 /* FMResultSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMResultSet.h; sourceTree = "<group>"; };
+		C75A741918C5B02C007FDEC5 /* FMDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabase.m; sourceTree = "<group>"; };
+		C75A741A18C5B02C007FDEC5 /* FMResultSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMResultSet.m; sourceTree = "<group>"; };
+		C75A741D18C5B054007FDEC5 /* DTParkingLotsDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTParkingLotsDB.h; sourceTree = "<group>"; };
+		C75A741E18C5B054007FDEC5 /* DTParkingLotsDB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTParkingLotsDB.m; sourceTree = "<group>"; };
+		C75A742218C5B1DE007FDEC5 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		C75A742C18C5D0DD007FDEC5 /* DTParkingLots.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = DTParkingLots.db; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -177,6 +190,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C75A742318C5B1DE007FDEC5 /* libsqlite3.dylib in Frameworks */,
 				594A7C4A18C57C94008C077C /* Security.framework in Frameworks */,
 				9D15D3D118B72A0C00FA635E /* MapKit.framework in Frameworks */,
 				9DE9D52418B462B50035519D /* CoreGraphics.framework in Frameworks */,
@@ -329,6 +343,7 @@
 		9DE9D52018B462B50035519D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C75A742218C5B1DE007FDEC5 /* libsqlite3.dylib */,
 				594A7C4918C57C94008C077C /* Security.framework */,
 				9D15D3D018B72A0C00FA635E /* MapKit.framework */,
 				9DE9D52118B462B50035519D /* Foundation.framework */,
@@ -342,9 +357,9 @@
 		9DE9D52718B462B50035519D /* Parkly */ = {
 			isa = PBXGroup;
 			children = (
-				9DE9D53018B462B50035519D /* DTAppDelegate.h */,
-				9DE9D53118B462B50035519D /* DTAppDelegate.m */,
+				C75A741618C5AFEA007FDEC5 /* FMDB */,
 				594A7C4B18C57F04008C077C /* Security */,
+				C75A741518C5AFC9007FDEC5 /* DTParkingLotDB */,
 				9DF5B44A18C55B1100E1D1D7 /* DTNetworking */,
 				9D15D3E718B809DC00FA635E /* DTDetail */,
 				9D15D3D518B7F77800FA635E /* DTDataTypes */,
@@ -352,6 +367,8 @@
 				9DE9D55A18B53CCF0035519D /* DTLotFinder */,
 				9D15D3C918B7234500FA635E /* DTSignup */,
 				9D2E92A418B5A48300509F23 /* DTUIElements */,
+				9DE9D53018B462B50035519D /* DTAppDelegate.h */,
+				9DE9D53118B462B50035519D /* DTAppDelegate.m */,
 				9DE9D53318B462B50035519D /* Main.storyboard */,
 				9DE9D53918B462B50035519D /* Images.xcassets */,
 				9DE9D52818B462B50035519D /* Supporting Files */,
@@ -362,6 +379,7 @@
 		9DE9D52818B462B50035519D /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				C75A742C18C5D0DD007FDEC5 /* DTParkingLots.db */,
 				9D15D3B218B6F34100FA635E /* JosefinSlab-Bold.ttf */,
 				9D15D3B318B6F34100FA635E /* JosefinSlab-BoldItalic.ttf */,
 				9D15D3B418B6F34100FA635E /* JosefinSlab-Italic.ttf */,
@@ -450,6 +468,26 @@
 			name = DTNetworking;
 			sourceTree = "<group>";
 		};
+		C75A741518C5AFC9007FDEC5 /* DTParkingLotDB */ = {
+			isa = PBXGroup;
+			children = (
+				C75A741D18C5B054007FDEC5 /* DTParkingLotsDB.h */,
+				C75A741E18C5B054007FDEC5 /* DTParkingLotsDB.m */,
+			);
+			name = DTParkingLotDB;
+			sourceTree = "<group>";
+		};
+		C75A741618C5AFEA007FDEC5 /* FMDB */ = {
+			isa = PBXGroup;
+			children = (
+				C75A741718C5B02C007FDEC5 /* FMDatabase.h */,
+				C75A741818C5B02C007FDEC5 /* FMResultSet.h */,
+				C75A741918C5B02C007FDEC5 /* FMDatabase.m */,
+				C75A741A18C5B02C007FDEC5 /* FMResultSet.m */,
+			);
+			name = FMDB;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -527,6 +565,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C75A742D18C5D0DD007FDEC5 /* DTParkingLots.db in Resources */,
 				9D15D3C418B6F34100FA635E /* JosefinSlab-Thin.ttf in Resources */,
 				9D15D3BF18B6F34100FA635E /* JosefinSlab-Light.ttf in Resources */,
 				9DE9D53A18B462B50035519D /* Images.xcassets in Resources */,
@@ -567,6 +606,7 @@
 				9DF5B46A18C55B2000E1D1D7 /* AFSecurityPolicy.m in Sources */,
 				9D15D4A018BD954400FA635E /* DTSpotTableCell.m in Sources */,
 				9DF5B46818C55B2000E1D1D7 /* AFHTTPSessionManager.m in Sources */,
+				C75A741C18C5B02C007FDEC5 /* FMResultSet.m in Sources */,
 				9D15D49A18BD8A0C00FA635E /* DTReviewTableCell.m in Sources */,
 				9DF5B47218C55B2000E1D1D7 /* DTNetworkManager.m in Sources */,
 				9D15D3EA18B809F400FA635E /* DTDetailViewController.m in Sources */,
@@ -577,8 +617,10 @@
 				594A7C5418C580C3008C077C /* PDKeychainBindingsController.m in Sources */,
 				9DE9D55918B53CC10035519D /* DTLoginViewController.m in Sources */,
 				9DF5B46718C55B2000E1D1D7 /* AFHTTPRequestOperationManager.m in Sources */,
+				C75A741F18C5B054007FDEC5 /* DTParkingLotsDB.m in Sources */,
 				9D284C9518C51FCE0044F89D /* DTProfileViewController.m in Sources */,
 				9DF5B46618C55B2000E1D1D7 /* AFHTTPRequestOperation.m in Sources */,
+				C75A741B18C5B02C007FDEC5 /* FMDatabase.m in Sources */,
 				9DF5B46E18C55B2000E1D1D7 /* AFURLSessionManager.m in Sources */,
 				9D15D3B118B5B33300FA635E /* DTRoundedImageView.m in Sources */,
 				9DF5B46918C55B2000E1D1D7 /* AFNetworkReachabilityManager.m in Sources */,

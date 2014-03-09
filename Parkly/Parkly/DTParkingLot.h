@@ -12,7 +12,7 @@
 
 //These properties correspond to the email sent out declaring the data stored in the webserver.  The types simply reflect a best guess as to the type of data each will contain. 
 
-@property (strong, nonatomic) NSString *_id;
+@property (assign, nonatomic) NSInteger _id;
 @property (strong, nonatomic) NSString *user_id;
 @property (strong, nonatomic) NSString *address1;
 @property (strong, nonatomic) NSString *address2;

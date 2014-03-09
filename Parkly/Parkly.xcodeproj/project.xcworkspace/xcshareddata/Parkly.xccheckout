@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>EA879EEF-FAA3-4AAE-B442-FFF1E7A0493A</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Parkly</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>3D9E476F-5364-4F69-B85B-BE704190346C</key>
+		<string>https://github.com/A92hm/Soba14-iOS.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Parkly/Parkly.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>3D9E476F-5364-4F69-B85B-BE704190346C</key>
+		<string>../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/A92hm/Soba14-iOS.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>3D9E476F-5364-4F69-B85B-BE704190346C</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>3D9E476F-5364-4F69-B85B-BE704190346C</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Soba14-iOS</string>
+		</dict>
+	</array>
+</dict>
+</plist>
