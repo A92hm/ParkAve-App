@@ -10,7 +10,7 @@
 #import "FMResultSet.h" 
 #import "DTParkingLot.h"
 
-#define DATABASE_NAME @"DTParkingLots.db"
+#define DATABASE_NAME @"parkinglot"
 
 @interface DTParkingLotsDB : NSObject
 

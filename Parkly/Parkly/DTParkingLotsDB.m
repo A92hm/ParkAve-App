@@ -27,26 +27,29 @@
 
 -(id)init
 {
-    self = [super init];
-
-    if(self)
+    if(self = [super init])
     {
-        NSArray *documentPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-        NSString *documentDir = [documentPaths objectAtIndex:0];
-    
-        databasePath = [documentDir stringByAppendingPathComponent:DATABASE_NAME];
+        [self initializeDatabase];
     }
-    
     return self;
+}
+
+-(void)initializeDatabase
+{
+    NSFileManager *fm = [NSFileManager defaultManager];
+    NSString *documentsDir = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+    NSString *templatePath = [[NSBundle mainBundle] pathForResource:@"DTParkingLots" ofType:@"db"];
+    databasePath = [documentsDir stringByAppendingPathComponent:[NSString stringWithFormat:@"DTParkingLots.db"]];
+    
+    if (![fm fileExistsAtPath:databasePath]) [fm copyItemAtPath:templatePath toPath:databasePath error:nil];
 }
 
 -(BOOL) updateParkingLot:(DTParkingLot *) lot
 {
     FMDatabase *db = [FMDatabase databaseWithPath:databasePath];
-    
     [db open];
     
-    BOOL success = [db executeUpdate:[NSString stringWithFormat:@"UPDATE parkinglots SET user_name = '%@', distance = '%f', average_rating = '%f', average_price = '%f' where user_id = %i", lot.userName, lot.distance, lot.averageRating, lot.averagePrice, lot.userID]];
+    BOOL success = [db executeUpdate:[NSString stringWithFormat:@"UPDATE %@ SET user_name = '%@', distance = '%@', average_rating = '%@', average_price = '%@' where user_id = %ld", DATABASE_NAME, lot.user_id, lot.distance, lot.averageRating, lot.averagePrice, (long)lot._id]];
     
     [db close];
     
@@ -56,16 +59,19 @@
 -(BOOL) insertParkingLot:(DTParkingLot *) lot
 {
     FMDatabase *db = [FMDatabase databaseWithPath:databasePath];
-    
+
     [db open];
+
+    NSString *sqlCommand = [NSString stringWithFormat:@"INSERT INTO %@ (user_name, distance, average_rating, average_price) VALUES (?,?,?,?);", DATABASE_NAME];
+    BOOL success = [db executeUpdate:sqlCommand, lot.user_id, lot.distance, lot.averageRating, lot.averagePrice, nil];
     
-    BOOL success = [db executeUpdate:@"INSERT INTO parkinglots (user_name, distance, average_rating, average_price) VALUES (?,?,?,?);", lot.userName, lot.distance, lot.averageRating, lot.averagePrice, nil];
+    NSLog(@"%d", [db lastErrorCode]);
+    
+    if(success) [_parkingLots addObject:lot];
     
     [db close];
     
-    return success; 
-    
-    return YES; 
+    return success;
 }
 
 -(NSMutableArray *) getParkingLots
@@ -79,17 +85,17 @@
 
     [db open];
     
-    FMResultSet *results = [db executeQuery:@"SELECT * FROM parkinglot"];
+    FMResultSet *results = [db executeQuery:[NSString stringWithFormat:@"SELECT * FROM %@", DATABASE_NAME]];
     
     while([results next]) 
     {
         DTParkingLot *lot = [[DTParkingLot alloc] init];
         
-        lot.userID = [results intForColumn:@"user_id"];
-        lot.userName = [results stringForColumn:@"user_name"];
-        lot.distance = [results doubleForColumn:@"distance"];
-        lot.averageRating = [results doubleForColumn:@"average_rating"];
-        lot.averagePrice = [results doubleForColumn:@"average_price"];
+        lot._id = [results intForColumn:@"user_id"];
+        lot.user_id = [results stringForColumn:@"user_name"];
+        lot.distance = [NSNumber numberWithDouble:[results doubleForColumn:@"distance"]];
+        lot.averageRating = [NSNumber numberWithDouble:[results doubleForColumn:@"average_rating"]];
+        lot.averagePrice = [NSNumber numberWithDouble:[results doubleForColumn:@"average_price"]];;
         
         [_parkingLots addObject:lot];
     }
