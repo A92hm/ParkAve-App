@@ -10,7 +10,7 @@
 
 @implementation DTNetworkManager
 
-static NSString * const apiBaseURL = @"http://dev.getparkave.com/api/";
+static NSString * const apiBaseURL = @"http://dev.getparkave.com:3000/api/";
 
 + (instancetype)sharedInstance {
     //  Static local predicate must be initialized to 0

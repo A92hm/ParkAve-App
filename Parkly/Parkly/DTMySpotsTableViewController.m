@@ -31,6 +31,7 @@
 {
   [super viewDidLoad];
   if([[DTModel sharedInstance] allReservedSpots]){
+    NSLog(@"Has spots");
     self.mySpots = [[DTModel sharedInstance] allReservedSpots];
   } else {
     self.mySpots = [[NSArray alloc] init];

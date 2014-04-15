@@ -21,7 +21,6 @@
         // Do any other initialisation stuff here
         sharedInstance.currentUser = [[DTUser alloc] init];
         sharedInstance.currentUser._id = @"-1";
-        
         sharedInstance.currentUserCars = [[NSArray alloc] init];
         
     });

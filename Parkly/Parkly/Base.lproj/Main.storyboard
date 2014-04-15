@@ -1256,6 +1256,18 @@
                                     <action selector="cancel:" destination="3OT-FQ-bKD" eventType="touchUpInside" id="pRd-Bp-0uL"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wZi-n5-KV1">
+                                <rect key="frame" x="237" y="25" width="63" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="17"/>
+                                <state key="normal" title="Log In">
+                                    <color key="titleColor" red="0.40000000600000002" green="0.40000000600000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="goToLogIn:" destination="3OT-FQ-bKD" eventType="touchUpInside" id="PIa-GA-wHO"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.1320996807" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -1283,6 +1295,7 @@
                         <outlet property="passwordField" destination="Vwn-nQ-Nit" id="Cgx-f8-yZa"/>
                         <outlet property="phoneField" destination="8ZP-II-c3A" id="d7w-2d-dwH"/>
                         <outlet property="theScrollView" destination="KR9-hn-YdR" id="SuS-J3-ska"/>
+                        <segue destination="9hH-lh-DPK" kind="modal" identifier="pushToLogIn" modalTransitionStyle="crossDissolve" id="0jh-fR-WAc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YET-4u-Pc4" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1307,34 +1320,37 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cJ1-oq-HsG">
-                                <rect key="frame" x="41" y="184" width="239" height="200"/>
+                                <rect key="frame" x="41" y="84" width="239" height="400"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Reserving..." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pi9-lN-OmE">
-                                        <rect key="frame" x="64" y="90" width="110" height="21"/>
+                                        <rect key="frame" x="64" y="170" width="110" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="110" id="YbC-5P-68D"/>
-                                            <constraint firstAttribute="height" constant="21" id="e1s-PK-gP2"/>
+                                            <constraint firstAttribute="width" constant="110" id="Rpb-sc-nh6"/>
+                                            <constraint firstAttribute="height" constant="21" id="v5g-SI-xnt"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="17"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="j4g-c0-LFZ">
-                                        <rect key="frame" x="101" y="122" width="37" height="36"/>
+                                        <rect key="frame" x="101" y="192" width="37" height="56"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="56" id="Wlt-mK-OZ3"/>
+                                            <constraint firstAttribute="width" constant="37" id="tKY-mf-fC4"/>
+                                        </constraints>
                                     </activityIndicatorView>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="centerX" secondItem="Pi9-lN-OmE" secondAttribute="centerX" constant="0.5" id="8qp-gK-PE0"/>
+                                    <constraint firstAttribute="centerY" secondItem="Pi9-lN-OmE" secondAttribute="centerY" constant="20" id="A7S-26-VsO"/>
                                     <constraint firstAttribute="width" constant="239" id="IN0-PP-xb5"/>
-                                    <constraint firstAttribute="centerY" secondItem="j4g-c0-LFZ" secondAttribute="centerY" constant="-40" id="Jc9-bA-BVS"/>
-                                    <constraint firstItem="j4g-c0-LFZ" firstAttribute="top" secondItem="Pi9-lN-OmE" secondAttribute="bottom" constant="11" id="KJB-3n-puw"/>
-                                    <constraint firstAttribute="centerY" secondItem="Pi9-lN-OmE" secondAttribute="centerY" id="O4R-1s-x4Z"/>
-                                    <constraint firstAttribute="centerX" secondItem="j4g-c0-LFZ" secondAttribute="centerX" id="Vh4-8V-LYo"/>
-                                    <constraint firstAttribute="height" constant="200" id="hc0-o3-uBT"/>
+                                    <constraint firstAttribute="centerX" secondItem="Pi9-lN-OmE" secondAttribute="centerX" id="KdN-0x-CAA"/>
+                                    <constraint firstAttribute="height" constant="400" id="hc0-o3-uBT"/>
+                                    <constraint firstAttribute="centerY" secondItem="j4g-c0-LFZ" secondAttribute="centerY" constant="-20" id="nWm-SZ-RxA"/>
+                                    <constraint firstAttribute="centerX" secondItem="j4g-c0-LFZ" secondAttribute="centerX" id="uHU-Fr-tgz"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Moe's Garage" textAlignment="center" lineBreakMode="middleTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" preferredMaxLayoutWidth="140" translatesAutoresizingMaskIntoConstraints="NO" id="gKy-Mz-1P6">
@@ -1587,11 +1603,13 @@
                     <connections>
                         <outlet property="loadingActivityIndicator" destination="j4g-c0-LFZ" id="Yrj-fB-aFl"/>
                         <outlet property="loadingView" destination="cJ1-oq-HsG" id="tAp-J1-Bze"/>
+                        <outlet property="loginButton" destination="N78-MN-4wo" id="qYl-6O-zAz"/>
                         <outlet property="lotDistanceLabel" destination="eGv-ea-c3D" id="swC-Hc-nB0"/>
                         <outlet property="lotNameLabel" destination="gKy-Mz-1P6" id="RdM-uS-brf"/>
                         <outlet property="lotOwnerLabel" destination="Znb-Hk-dc2" id="gMs-Ok-2PP"/>
                         <outlet property="lotRatingLabel" destination="LZP-v4-1sr" id="EVu-L9-UjB"/>
                         <outlet property="reserveButton" destination="CSm-PH-zvK" id="8nr-l2-EXp"/>
+                        <outlet property="signupButton" destination="cd2-12-dgZ" id="SjT-5c-GQ3"/>
                         <outlet property="spotDateLabel" destination="MSD-i6-fvn" id="rai-pm-Kq6"/>
                         <outlet property="spotPriceLabel" destination="E66-sm-coy" id="AXy-lI-jeU"/>
                         <outlet property="spotTypeLabel" destination="DiL-ic-qpx" id="Rko-4M-RA2"/>
@@ -2161,7 +2179,7 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="5Nt-nu-raX"/>
         <segue reference="EKt-tY-rqt"/>
+        <segue reference="5Nt-nu-raX"/>
     </inferredMetricsTieBreakers>
 </document>

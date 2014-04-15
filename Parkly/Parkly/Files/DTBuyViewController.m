@@ -14,6 +14,8 @@
 
 @property (strong, nonatomic) DTLoginViewController *loginViewController;
 @property (strong, nonatomic) DTSignupViewController *signupViewController;
+@property (strong, nonatomic) IBOutlet UIButton *signupButton;
+@property (strong, nonatomic) IBOutlet UIButton *loginButton;
 
 @end
 
@@ -33,8 +35,11 @@
   [super viewDidLoad];
   [self.loadingView setHidden:YES];
   [self populateFields];
+}
+
+-(void)viewDidAppear:(BOOL)animated
+{
   [self checkUserStatus];
-	// Do any additional setup after loading the view.
 }
 
 - (void)didReceiveMemoryWarning
@@ -56,26 +61,28 @@
 
 - (IBAction)tryToReserve:(id)sender
 {
+  /*
+  [self showLoading];
+  [self performSelector:@selector(pushToReceipt) withObject:nil afterDelay:1.0];
+  */
+  
   if([[DTModel sharedInstance] userHasAccount] && [[DTModel sharedInstance] userIsLoggedIn]){
-    [self.loadingView setHidden:NO];
-    [self.loadingActivityIndicator startAnimating];
-    
-    
+    [self showLoading];
     [[DTModel sharedInstance] purchaseSpot:self.theSpot forUser:[[DTModel sharedInstance] currentUser] withCar:[[DTModel sharedInstance] defaultCar] success:^(NSURLSessionDataTask *task, id responseObject) {
-      [self.loadingActivityIndicator stopAnimating];
-      [self.loadingView setHidden:YES];
-      [self performSegueWithIdentifier:@"goToReceipt" sender:self];
+      [self pushToReceipt];
+      
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
       NSLog(@"Unable to purchase spot : %@", error);
-      [self.loadingActivityIndicator stopAnimating];
-      [self.loadingView setHidden:YES];
-      [[[UIAlertView alloc] initWithTitle:@"Error" message:[NSString stringWithFormat:@"Unable to purchase spot.  Error : %d", [error code]] delegate:nil cancelButtonTitle:@"Dismiss" otherButtonTitles: nil] show];
+      
+      [[[UIAlertView alloc] initWithTitle:@"Error" message:[NSString stringWithFormat:@"Unable to purchase spot.  Error : %@", [error description]] delegate:nil cancelButtonTitle:@"Dismiss" otherButtonTitles: nil] show];
+      [self dismissLoading];
     }];
   } else if([[DTModel sharedInstance] userHasAccount] && ![[DTModel sharedInstance] userIsLoggedIn]){
       [self performSegueWithIdentifier:@"pushToLogin" sender:self];
   } else {
     [self performSegueWithIdentifier:@"pushToSignup" sender:self];
   }
+   
 }
 
 -(NSString*)generateReceipt
@@ -88,12 +95,32 @@
 
 -(void)showLoading
 {
+  [self.signupButton setTintAdjustmentMode:UIViewTintAdjustmentModeDimmed];
+  [self.signupButton setEnabled:NO];
+  [self.loginButton setTintAdjustmentMode:UIViewTintAdjustmentModeDimmed];
+  [self.loginButton setEnabled:NO];
+  
   [self.loadingView setHidden:NO];
+  [self.loadingActivityIndicator startAnimating];
+  [self.view bringSubviewToFront:self.loadingView];
 }
 
 -(void)dismissLoading
 {
+  [self.signupButton setTintAdjustmentMode:UIViewTintAdjustmentModeNormal];
+  [self.signupButton setEnabled:YES];
+  [self.loginButton setTintAdjustmentMode:UIViewTintAdjustmentModeNormal];
+  [self.loginButton setEnabled:YES];
   
+  [self.loadingActivityIndicator stopAnimating];
+  [self.loadingView setHidden:YES];
+  [self.view sendSubviewToBack:self.loadingView];
+}
+
+-(void)pushToReceipt
+{
+  [self dismissLoading];
+  [self performSegueWithIdentifier:@"goToReceipt" sender:self];
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender

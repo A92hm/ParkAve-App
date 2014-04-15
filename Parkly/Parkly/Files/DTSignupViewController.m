@@ -7,6 +7,7 @@
 //
 
 #import "DTSignupViewController.h"
+#import "DTLoginViewController.h"
 #import "DTUser.h"
 #import "DTModel.h"
 
@@ -83,6 +84,14 @@
 {
   [self.theScrollView setContentOffset:CGPointMake(0, textField.frame.origin.y - 30.0f) animated:YES];
 }
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+  if([[segue identifier] isEqualToString:@"pushToLogIn"]){
+    [[segue destinationViewController] setDelegate:self.delegate];
+  }
+}
+
 - (IBAction)tap:(id)sender
 {
   [self.firstNameField resignFirstResponder];
@@ -92,6 +101,10 @@
   [self.dateOfBirthField resignFirstResponder];
   [self.phoneField resignFirstResponder];
   [self.theScrollView setContentOffset:CGPointMake(0.0f, 0.0f) animated:YES];
+}
+- (IBAction)goToLogIn:(id)sender
+{
+  [self performSegueWithIdentifier:@"pushToLogIn" sender:self];
 }
 
 @end

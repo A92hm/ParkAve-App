@@ -70,7 +70,9 @@
 
 -(void)addLots:(NSArray *)theLots
 {
-  [self.lotsCache setObject:theLots forKey:self.ALL_LOTS_KEY];
+  if(theLots){
+    [self.lotsCache setObject:theLots forKey:self.ALL_LOTS_KEY];
+  }
 }
 
 -(void)addSpots:(NSArray*)theSpots forLot:(DTParkingLot*)theLot
