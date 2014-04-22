@@ -97,7 +97,9 @@
 
 -(void)addReviews:(NSArray*)theReviews forUser:(DTUser*)theUser
 {
-  [self.reviewsCache setObject:theReviews forKey:theUser._id];
+  if(theReviews){
+    [self.reviewsCache setObject:theReviews forKey:theUser._id];
+  }
 }
 
 -(void)addCars:(NSArray *)theCars forUser:(DTUser *)theUser
