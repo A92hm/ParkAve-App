@@ -1,29 +1,29 @@
-#Nearby iOS Application
+# ParkAve iOS Application
 This is the iOS client application for Park Ave. Using this applications the users are able to find, reserve, and navigate to the private parking listed on the Park-Ave's website.
 
-##Usage
-###Compilation/Install
+## Usage
+### Compilation/Install
 You can build and deploy this application to your iPhone using Xcode.
 
 ```bash
 git clone https://github.com/parkave/parkave-ios.git
 ```
 
-###Execution
+### Execution
 An iOS device is needed for using this application.
 
 
-##Dependencies
+## Dependencies
 All the dependencies are included in the project and here is a list of them: (No installation is required)
 * [AFNetworking](https://github.com/AFNetworking/AFNetworking.git)
 
-##Structure
+## Structure
 Standard Xcode project structure.
 
-##[Potential Bugs](https://github.com/parkave/parkave-ios/issues)
+## [Potential Bugs](https://github.com/parkave/parkave-ios/issues)
 
-##To do
+## To do
 * App store
 
-##License
+## License
 [MIT license](http://opensource.org/licenses/MIT) 
